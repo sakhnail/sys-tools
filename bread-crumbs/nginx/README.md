@@ -1,3 +1,4 @@
+<p>Файл конфига nginx по-умолчанию <a href="../nginx/files/nginx-default.conf">по ссылке</a> </p>
 <p>1. Настройка WildFly + Nginx. В данном случае Nginx выступает в качестве обратного прокси:</p>
 <pre><code>events {
   worker_connections  4096;  ## Default: 1024
