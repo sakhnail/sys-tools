@@ -8,10 +8,10 @@ http {
    listen 80;
    listen [::]:80;
 
-   server_name 192.168.40.82;
+   server_name medomain.com;
 
    location / {
-       proxy_pass http://127.0.0.1:8080/;
+       proxy_pass http://medomain:8080/;
        proxy_set_header Host $host;
    }
  }
@@ -19,10 +19,10 @@ http {
    listen 90;
    listen [::]:90;
 
-   server_name 192.168.40.82;
+   server_name medomain.com;
 
    location / {
-       proxy_pass http://127.0.0.1:9990/;
+       proxy_pass http://medomain:9990/;
        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
        proxy_set_header Host $server_addr:$server_port;
        proxy_set_header X-Real-IP $remote_addr;
@@ -31,16 +31,36 @@ http {
 }</code></pre>
 <p>2. Настройка Nginx в качестве балансировщика.</p>
 <p>2.1. По-умолчаню:</p>
-<pre><code>upstream test {
-    	server localhost:8080;
-    	server localhost:8081;
+<pre><code>http {
+  # ...
+  upstream backend {
+    server app1.domain.com:8080;
+    server app2.domain.com:8081;
+  }
+  server {
+    listen 80;
+    server_name medomain.com;
+
+  location / {
+    proxy_pass http://backend;
     }
-    server {
-    	listen 81;
-    	server_name localhost;
-    	client_max_body_size 1024M;
-    	location / {
-    		proxy_pass http://test;
-    		proxy_set_header Host $host:$server_port;
-    	}
-    }</code></pre>
+  }
+}</code></pre>
+<p>3. Отображение статичного контенкта:</p>
+<pre><code>http {
+  # ...
+  server {
+    listen 80;
+    server_name medomain.com;
+  location / {
+      root /var/www/medomain;
+    }
+
+  location ~ \.(woff|woff2)$ {
+      root /var/www/medomain/fonts;
+    }
+  location ~ \.(gif|jpg|png)$ {
+      root /var/www/medomain/images;
+    }
+  }
+}</code></pre>
