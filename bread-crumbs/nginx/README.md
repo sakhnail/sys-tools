@@ -1,5 +1,5 @@
 <p>Файл конфига nginx по-умолчанию <a href="../nginx/files/nginx-default.conf">по ссылке</a> </p>
-<p>1. Настройка WildFly + Nginx. В данном случае Nginx выступает в качестве обратного прокси:</p>
+<p>1. Настройка WildFly + Nginx (<a href="../nginx/files/nginx-proxy.conf">пример конфига</a>). В данном случае Nginx выступает в качестве обратного прокси:</p>
 <pre><code>events {
   worker_connections  4096;  ## Default: 1024
 }
@@ -29,7 +29,7 @@ http {
    }
  }
 }</code></pre>
-<p>2. Настройка Nginx в качестве балансировщика.</p>
+<p>2. Настройка Nginx в качестве балансировщика (<a href="../nginx/files/nginx-balance.conf">пример конфига</a>).</p>
 <p>2.1. По-умолчаню:</p>
 <pre><code>http {
   # ...
@@ -46,7 +46,7 @@ http {
     }
   }
 }</code></pre>
-<p>3. Отображение статичного контенкта:</p>
+<p>3. Отображение статичного контенкта (<a href="../nginx/files/nginx-static.conf">пример конфига</a>):</p>
 <pre><code>http {
   # ...
   server {
