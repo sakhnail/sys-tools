@@ -1,4 +1,5 @@
 <p>Все действия выполняются от имени привелигирированного пользователя (sudo).</p>
+<p>**Пользователи**</p>
 <p>Добавить пользователя:</p>
 <code>useradd -m UserTest</code>, где -m - это создать пользователя UserTest с home-директорией
 <p>Создать пароль пользователю:</p>
@@ -17,6 +18,7 @@
 <p><code>usermod -aG NewGroup UserTest</code> - <code>usermod</code>, модифицировать пользователя, <code>-aG</code> - добавить в группу NewGroup пользователя UserTest.</p>
 <p><code>usermod -aG sudo UserTest</code> - сделает пользователя UserTest суперпользователем.</p>
 <p><code>deluser UserTest NewGroup</code> - удалит пользователя UserTest из группы NewGroup</p>
+<p>**Каталоги и файлы**</p>
 <p>Права на каталоги и файлы:</p>
 <p><pre><code>[vagrant@localhost ~]$ ls -la
 drwx------. 7 vagrant vagrant  150 May 31 08:09 .
