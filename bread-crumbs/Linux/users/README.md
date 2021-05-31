@@ -15,3 +15,5 @@
 <p><code>groupdel NewGroup</code></p>
 <p>Добавить пользователя в группу:</p>
 <p><code>usermod -aG NewGroup UserTest</code> - <code>usermod</code>, модифицировать пользователя, <code>-aG</code> - добавить в группу NewGroup пользователя UserTest.</p>
+<p><code>usermod -aG sudo UserTest</code> - сделает пользователя UserTest суперпользователем.</p>
+<p><code>deluser UserTest NewGroup</code> - удалит пользователя UserTest из группы NewGroup</p>
